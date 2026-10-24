@@ -63,7 +63,7 @@ def encode_state(stage: str, state: dict) -> list[int]:
 
 def decode_registers(stage: str, registers: list[int]) -> dict:
     defs = STAGE_REGISTERS[stage]
-    return {reg.name: decode_value(reg, raw) for reg, raw in zip(defs, registers)}
+    return {reg.name: decode_value(reg, raw) for reg, raw in zip(defs, registers, strict=True)}
 
 
 def decode_registers_from_offset(stage: str, address: int, values: list[int]) -> dict:

@@ -71,9 +71,7 @@ class Plc:
             updated = self.client.actuate(self.stage, to_send)
             self._apply_state(updated)
         except Exception:
-            logger.exception(
-                "failed to relay write to plant-sim for stage %s", self.stage
-            )
+            logger.exception("failed to relay write to plant-sim for stage %s", self.stage)
 
     def _apply_state(self, state: dict) -> None:
         values = encode_state(self.stage, state)
@@ -115,6 +113,4 @@ class Plc:
                 ca=str(certs_path / "ca.crt"),
             )
         else:
-            StartTcpServer(
-                context=self.context, identity=identity, address=("0.0.0.0", self.port)
-            )
+            StartTcpServer(context=self.context, identity=identity, address=("0.0.0.0", self.port))
