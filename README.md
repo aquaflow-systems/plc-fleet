@@ -5,6 +5,10 @@ internal API for sensor values and actuator state, keeps a Modbus register table
 in sync with them, and exposes that table over real Modbus to anything on
 `control-net` -- exactly like a real PLC would on the wire.
 
+Also installable as a package (`plc_fleet`) -- `scada-hmi` depends on it directly
+for the register encoding/decoding logic, rather than duplicating the register
+table.
+
 ## Stages and protocol
 
 | Stage | Protocol |
@@ -21,18 +25,28 @@ Register addresses and scaling: see `AquaFlow-Systems/plant-spec/register-map.md
 
 ```bash
 pip install -r requirements.txt
-python -m src.main --stage dosing --no-tls
+python -m plc_fleet.main --stage dosing --no-tls
 ```
 
 For a TLS-secured stage, point `--certs` at the output of
 `plant-spec/certs/generate-certs.sh`:
 
 ```bash
-python -m src.main --stage filtration --certs ../plant-spec/certs/out
+python -m plc_fleet.main --stage filtration --certs ../plant-spec/certs/out
 ```
 
 Requires `plant-sim` to already be running and reachable (see
 `AquaFlow-Systems/plant-spec/network-plan.md` for the expected address).
+
+## Using plc_fleet as a dependency
+
+Other repos (e.g. `scada-hmi`) can install this package directly:
+
+```
+plc-fleet @ git+https://github.com/AquaFlow-Systems/plc-fleet.git@main
+```
+
+and import `plc_fleet.registers` for the register map's encode/decode logic.
 
 ## Tests
 

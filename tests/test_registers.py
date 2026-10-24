@@ -1,4 +1,4 @@
-from src.registers import (
+from plc_fleet.registers import (
     decode_registers,
     decode_registers_from_offset,
     encode_state,

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 class RegisterDef:
     address: int
     name: str
-    scale: float
+    scale: float  # register_value = python_value * scale
     writable: bool
     is_bool: bool = False
 

@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from src.plc import Plc
+from plc_fleet.plc import Plc
 
 DEFAULT_PLANT_SIM_URL = "http://plant-sim:8000"
 DEFAULT_PORT = 502

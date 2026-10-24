@@ -7,8 +7,8 @@ from pymodbus.datastore import ModbusSequentialDataBlock, ModbusServerContext, M
 from pymodbus.device import ModbusDeviceIdentification
 from pymodbus.server import StartTcpServer, StartTlsServer
 
-from src.plant_sim_client import PlantSimClient
-from src.registers import (
+from plc_fleet.plant_sim_client import PlantSimClient
+from plc_fleet.registers import (
     STAGE_REGISTERS,
     decode_registers_from_offset,
     encode_state,

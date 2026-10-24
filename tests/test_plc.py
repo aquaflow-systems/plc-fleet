@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
 
-from src.plc import Plc
+from plc_fleet.plc import Plc
 
 
 def make_plc(stage="dosing"):
